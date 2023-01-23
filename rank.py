@@ -58,9 +58,9 @@ if __name__ == '__main__':
     cipher_length = len(low_rank) if len(low_rank) >= len(high_rank) else len(high_rank)
     print(f"{cipher_length=}")
 
-    deciphered_low = decipher(low_rank, cipher_length)
+    deciphered_low = decipher(low_rank)
     print(f"{deciphered_low}")
-    deciphered_high = decipher(high_rank, cipher_length)
+    deciphered_high = decipher(high_rank)
     print(f"{deciphered_high}")
 
     padded_low, padded_high = pad_original_ranks(deciphered_low, deciphered_high)

@@ -57,11 +57,8 @@ cipher_table = {
 }
 
 
-def decipher(rank: str, length: int) -> list[int]:
+def decipher(rank: str) -> list[int]:
     """ Returns a list of deciphered numbers from a string rank """
-    if len(rank) < length:
-        # TODO - something
-        pass
     deciphered_array = []
     for item in rank:
         deciphered_array.append(decipher_table[item])
