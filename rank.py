@@ -1,4 +1,5 @@
 import math
+import sys
 
 from cipher import decipher, recipher
 
@@ -48,38 +49,60 @@ def validate_rank(low, high, new):
 
 
 if __name__ == '__main__':
+    args = sys.argv
+    low_rank = args[1]
+    high_rank = args[2]
+    if len(args) > 3:
+        debug = args[3]
+    else:
+        debug = False
 
-    low_rank = 'aaabbs'
-    high_rank = 'aaabbt'
-
-    print(f"{low_rank=}")
-    print(f"{high_rank=}")
 
     cipher_length = len(low_rank) if len(low_rank) >= len(high_rank) else len(high_rank)
-    print(f"{cipher_length=}")
 
     deciphered_low = decipher(low_rank)
-    print(f"{deciphered_low}")
     deciphered_high = decipher(high_rank)
-    print(f"{deciphered_high}")
 
     padded_low, padded_high = pad_original_ranks(deciphered_low, deciphered_high)
-    print(f"{padded_low=}")
-    print(f"{padded_high=}")
 
     numerical_low = numericize(padded_low)
-    print(f"{numerical_low=}")
     numerical_high = numericize(padded_high)
-    print(f"{numerical_high=}")
 
     mean = find_mean(numerical_high, numerical_low)
-    print(f"{mean=}")
 
     rebased_number = rebase(mean, cipher_length)
-    print(f"{rebased_number=}")
 
     new_rank = recipher(rebased_number)
-    print(f"{new_rank=}")
 
     valid_rank = validate_rank(low_rank, high_rank, new_rank)
-    print(f"{valid_rank=}")
+
+    ranks = [low_rank, high_rank, valid_rank]
+    sorted_ranks = sorted(ranks)
+    print("="*20)
+    print(f'Low rank was {low_rank}')
+    print(f'High rank was {high_rank}')
+    print(f'The new rank is {valid_rank}')
+    print('')
+    print(f"The sorted order, ASC, should be ['{low_rank}', '{valid_rank}', '{high_rank}']")
+    print('')
+    print(f"The actual sorted order is       {sorted_ranks}")
+    print('')
+    print("="*20)
+
+
+
+    if debug:
+        print(f"{debug=}")
+        print(f"{low_rank=}")
+        print(f"{high_rank=}")
+        print(f"{cipher_length=}")
+        print(f"{deciphered_low}")
+        print(f"{deciphered_high}")
+        print(f"{padded_low=}")
+        print(f"{padded_high=}")
+        print(f"{numerical_low=}")
+        print(f"{numerical_high=}")
+        print(f"{mean=}")
+        print(f"{rebased_number=}")
+        print(f"{new_rank=}")
+        print(f"{valid_rank=}")
