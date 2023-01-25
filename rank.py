@@ -79,9 +79,9 @@ if __name__ == '__main__':
     ranks = [low_rank, high_rank, valid_rank]
     sorted_ranks = sorted(ranks)
     print("="*20)
-    print(f'Low rank was {low_rank}')
-    print(f'High rank was {high_rank}')
-    print(f'The new rank is {valid_rank}')
+    print(f'Low rank was      "{low_rank}"')
+    print(f'High rank was     "{high_rank}"')
+    print(f'The new rank is   "{valid_rank}"')
     print('')
     print(f"The sorted order, ASC, should be ['{low_rank}', '{valid_rank}', '{high_rank}']")
     print('')
