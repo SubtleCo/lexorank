@@ -5,13 +5,55 @@ Let's see it in action first, and then describe what's going on under the hood.
 
 ## To run:
 
-For clean output:
+For clean output:\
 `python rank.py x y`
 where `x=` your low rank as a lowercase string i.e. `abc`
 and `y=` your low rank as a lowercase string i.e. `def`
 
+```
+❯ python rank.py bcd deg
+====================
+Low rank was      "bcd"
+High rank was     "deg"
+The new rank is   "cde"
+
+The sorted order, ASC, should be ['bcd', 'cde', 'deg']
+
+The actual sorted order is       ['bcd', 'cde', 'deg']
+
+====================
+```
+
 For debugged output:
 `python rank.py x y debug`
+
+```
+❯ python rank.py bcd deg debug
+====================
+Low rank was      "bcd"
+High rank was     "deg"
+The new rank is   "cde"
+
+The sorted order, ASC, should be ['bcd', 'cde', 'deg']
+
+The actual sorted order is       ['bcd', 'cde', 'deg']
+
+====================
+debug='debug'
+low_rank='bcd'
+high_rank='deg'
+cipher_length=3
+[1, 2, 3]
+[3, 4, 6]
+padded_low=[1, 2, 3]
+padded_high=[3, 4, 6]
+numerical_low=731
+numerical_high=2138
+mean=1434
+rebased_number=[2, 3, 4]
+new_rank='cde'
+valid_rank='cde'
+```
 
 
 ## How it works
