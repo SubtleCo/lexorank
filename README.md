@@ -54,7 +54,11 @@ rebased_number=[2, 3, 4]
 new_rank='cde'
 valid_rank='cde'
 ```
-
+## What this project does
+- Generate a bulk list of lexoranks for a given number of items. Useful for:
+ - Introducing lexorank to an existing project
+ - Rebalancing the table, if necessary
+- Calculate a new rank given the "previous" and "next" rank
 
 ## How it works
 Lexicographical ranking uses a Base26 cipher (a=0 ... z=25) to order a list of items. When a rank is calculated, a numerical mean between the surrounding items is converted to a "lexorank". Once the data is refetched from the source, ordered by rank, ascending, the list of items will be in the user defined order. By using the mean, we're able to provide a good deal of "padding" between ranks for future operations. For instance, if we have four items ranked `aaaaaa=0, iririr=102971925, ririri=205943850, zzzzzz=308915775`, that means we've got about 102 million spots between each item. Room to grow and then some.
@@ -86,7 +90,7 @@ Now let's look at that same example with lexoranks.
 
 To move `savory` up, I need a rank between `abc` and `abd`. Ah, here's the beauty of string ranking:
   **If I throw literally any letter at the end of `abc` it will fit between `abc` and `abd`**
-Rather than choosing a random letter, let's choose the one smack dab in the middle of the alphabet: **n**
+Rather than choosing a random letter, let's choose the one smack dab in the middle of the alphabet: **n**\
 We've just opened up 12 or 13 ranks on either side! This is a method I've come to call **n-tacking** (tacking an 'n' on the end!)
 
 Let's see it in action:
@@ -101,5 +105,6 @@ Really great news. We were able to solve the conflict with my very good friend `
 
 **When sorting, you only need to operate on a single item / document / database row**
 
-
+#### Rebalancing
+Now then, nothing is truly infinite in computing. Let's say you created the rank column in your database to hold a string of length 255. If you were to use this algorithm indefinitely with no cleanup action, you may eventually run out of room, and rebalancing is necessary. No problem. Just called the original `create_bulk_rank` function. That might chew up a bit of computing resources, but we should only have to do this extremely sparingly, and, hey, the computer's doing it, not you.
 
