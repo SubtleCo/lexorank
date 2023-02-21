@@ -26,8 +26,20 @@ For instance, if I asked you to sort `bksjdfnr` and `csdlfkjgbl` alphabetically,
 #### But computers can sort numbers faster than strings!
 True, but let's get back to that conflict where we want to place one item after another, but the newly calculated rank AND the rank of the item above are both `123`. The next item is rank `124`. (yes, we could use floats, but that's just delaying the inevitable). 
 
-| Item         | Price     | # In stock |
-|--------------|-----------|------------|
-| Spicy | 1.99      | *7*        |
-| Sweet      | **1.89**  | 5234       |
-| Savory      | **1.89**  | 5234       |
+In this example, I want to move `Savory` between `Spicy` and `Sweet`, but given that there's no integer between `123` and `124`, I'd need to rebalance the whole table.
+
+| Item         | Rank  |
+|--------------|-------|
+| Spicy        | 123   |
+| Sweet        | 124   |
+| Savory       | 125   |
+
+Now let's look at that same example with lexoranks.
+
+| Item         | Rank  |
+|--------------|-------|
+| Spicy        | abc   |
+| Sweet        | abd   |
+| Savory       | abe   |
+
+To move `savory` up, I need a rank between `abc` and `abd`. Ah, here's the beauty of string ranking. **If I throw literally any letter at the end of** `abc` **it will fit between `abc` and `abd`**
