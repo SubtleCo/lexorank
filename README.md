@@ -55,5 +55,9 @@ Let's see it in action:
 | Savory       | abcn  |
 | Sweet        | abd   |
 
-Really great news. We were able to solve the conflict with my very good friend `n`. Thank you, `n`.
+Really great news. We were able to solve the conflict with my very good friend `n`. Thank you, `n`. We didn't have to rebalance anything, which brings up the point of lexicographical ranking:
+
+**When sorting, you only need to operate on a single item / document / database row**
+
+
 
