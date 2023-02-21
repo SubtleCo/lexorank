@@ -42,4 +42,18 @@ Now let's look at that same example with lexoranks.
 | Sweet        | abd   |
 | Savory       | abe   |
 
-To move `savory` up, I need a rank between `abc` and `abd`. Ah, here's the beauty of string ranking. **If I throw literally any letter at the end of** `abc` **it will fit between `abc` and `abd`**
+To move `savory` up, I need a rank between `abc` and `abd`. Ah, here's the beauty of string ranking:
+  **If I throw literally any letter at the end of `abc` it will fit between `abc` and `abd`**
+Rather than choosing a random letter, let's choose the one smack dab in the middle of the alphabet: **n**
+We've just opened up 12 or 13 ranks on either side! This is a method I've come to call **n-tacking** (tacking an 'n' on the end!)
+
+Let's see it in action:
+
+| Item         | Rank  |
+|--------------|-------|
+| Spicy        | abc   |
+| Savory       | abcn  |
+| Sweet        | abd   |
+
+Really great news. We were able to solve the conflict with my very good friend `n`. Thank you, `n`.
+
