@@ -7,8 +7,8 @@ Let's see it in action first, and then describe what's going on under the hood.
 
 For clean output:\
 `python rank.py x y`
-where `x=` your low rank as a lowercase string i.e. `abc`
-and `y=` your low rank as a lowercase string i.e. `def`
+where `x=` your low rank as a lowercase string i.e. `bcd`
+and `y=` your low rank as a lowercase string i.e. `deg`
 
 ```
 ❯ python rank.py bcd deg
